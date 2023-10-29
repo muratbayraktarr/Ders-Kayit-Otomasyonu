@@ -587,8 +587,6 @@ pre {
   max-width: 41.66667%; }
 
 .col-6 {
-  display: flex;
-  justify-content: center;
   flex: 0 0 50%;
   max-width: 50%; }
 
@@ -719,11 +717,8 @@ pre {
     flex: 0 0 41.66667%;
     max-width: 41.66667%; }
   .col-sm-6 {
-    position: absolute;
-    top: 30%;
-    left: 36%;
-    flex: 0 0 25%;
-    max-width: 25%; }
+    flex: 0 0 50%;
+    max-width: 50%; }
   .col-sm-7 {
     flex: 0 0 58.33333%;
     max-width: 58.33333%; }
@@ -913,9 +908,6 @@ pre {
     flex: 0 0 16.66667%;
     max-width: 16.66667%; }
   .col-lg-3 {
-    position: absolute;
-    top: 10.7%;
-    left: 36%;
     flex: 0 0 25%;
     max-width: 25%; }
   .col-lg-4 {
@@ -943,11 +935,8 @@ pre {
     flex: 0 0 91.66667%;
     max-width: 91.66667%; }
   .col-lg-12 {
-    position: absolute;
-    top: 9.5%;
-    left: 83%;
-    flex: 0 0 10%;
-    max-width: 0%; }
+    flex: 0 0 100%;
+    max-width: 100%; }
   .order-lg-first {
     order: -1; }
   .order-lg-last {
@@ -7566,8 +7555,6 @@ sub {
   color: #abafb3; }
 
 .footer {
-  position: bottom;
-  bottom: 0;
   padding-left: 15.1875rem;
   background-color: #fff; }
   .footer .copyright {
