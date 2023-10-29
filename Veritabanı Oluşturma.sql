@@ -10,13 +10,6 @@ CREATE TABLE users (
     KullaniciTipi VARCHAR(50) NOT NULL
 );
 
--- Öğrenciler Tablosu
-CREATE TABLE students (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    KullaniciID INT,
-    OgrenciNo VARCHAR(20) NOT NULL,
-    FOREIGN KEY (KullaniciID) REFERENCES users(ID)
-);
 
 
 -- Öğretmenler Tablosu
@@ -25,6 +18,17 @@ CREATE TABLE teachers (
     KullaniciID INT,
     FOREIGN KEY (KullaniciID) REFERENCES users(ID)
 );
+
+-- Öğrenciler Tablosu
+CREATE TABLE students (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    KullaniciID INT,
+    OgrenciNo VARCHAR(20) NOT NULL,
+	DanismanID INT,
+    FOREIGN KEY (KullaniciID) REFERENCES users(ID),
+    FOREIGN KEY (DanismanID) REFERENCES teachers(ID)
+);
+
 
 -- Mühendislik Bölümleri
 CREATE TABLE engineeringdepartments (
@@ -37,10 +41,10 @@ CREATE TABLE courses (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     DersAdi VARCHAR(100) NOT NULL,
     DersKodu VARCHAR(20) NOT NULL,
-    DersAciklamasi TEXT,
     OgretmenID INT,
     BolumID INT,
-    DersZamani VARCHAR(100),
+    DersSaati VARCHAR(100),
+	DersGunu VARCHAR(100),
     DersYeri VARCHAR(100),
     FOREIGN KEY (OgretmenID) REFERENCES teachers(ID),
 	FOREIGN KEY (BolumID) REFERENCES engineeringdepartments(ID)
