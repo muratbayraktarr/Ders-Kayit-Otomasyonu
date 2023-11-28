@@ -1,5 +1,11 @@
+com\model\Teacher.class
 com\mycompany\obs\resources\JakartaEE10Resource.class
 com\sqlKomutlari\Login.class
+com\model\Department.class
 com\sqlKomutlari\addUser.class
+com\sqlKomutlari\LessonSQL.class
 com\db\MySQLVeritabaniBaglantisi.class
+com\sqlKomutlari\DepartmentSQL.class
+com\model\Lesson.class
 com\mycompany\obs\JakartaRestConfiguration.class
+com\sqlKomutlari\TeacherSQL.class

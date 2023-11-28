@@ -1,11 +1,21 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.db.MySQLVeritabaniBaglantisi" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.sqlKomutlari.DepartmentSQL" %>
+<%@ page import="com.model.Department" %>
 
 
 <%@ include file="sessioncontrol.jsp" %>
 <%@ include file="kullanicitipi.jsp" %>
 
+
+<%    
+        
+    
+
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,59 +53,43 @@
             <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">Bölüm Adı :</label>
                 <div class="col-sm-6 d-flex">
-                    <input type="text" class="form-control">
+                    <input type="text" name ="department_name" class="form-control">
                         <button type="submit" class="btn btn-primary ms-2">Kaydet</button>
                 </div>
             </div>
         </form>
-        <% // Veri kaydı yapılacak %>
+        <% // Veri kaydı yapılacak
+            if (request.getMethod().equalsIgnoreCase("POST")) {
+                String name = request.getParameter("department_name");
+                DepartmentSQL d1 = new DepartmentSQL();
+                String Message = d1.DepartmentAdd(name);
+                System.out.println(Message);
+            }
+
+        %>
         <!-- Table with stripped rows -->
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+
                 </tr>
             </thead>
             <tbody>
+                <%                    
+                DepartmentSQL veriIsleme = new DepartmentSQL();
+                ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
+                for (Department veri : veriListesiDepartment) {
+
+                    System.out.println(veri.getId());
+                    System.out.println(veri.getName());
+                %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
+                    <td><%= veri.getId()%></td>
+                    <td><%= veri.getName()%></td>                   
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                </tr>
+                <% }%>
             </tbody>
         </table>
         <!-- End Table with stripped rows -->

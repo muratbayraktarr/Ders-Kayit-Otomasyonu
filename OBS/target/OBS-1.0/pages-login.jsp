@@ -77,13 +77,18 @@
                                                         session.setAttribute("level",login.getLevel());
                                                     }
                                                 %> 
+                                                <!-- Giriş başarılı yönlendiriliyorsunuz yazacak -->
                                                     <script>
                                                         setTimeout(function() {
-
+                                                            
                                                         window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
-                                                        }, 3000); // 3 saniye (3000 milisaniye) sonra yönlendirme yapacak
+                                                        }, 2000); // 2 saniye (2000 milisaniye) sonra yönlendirme yapacak
                                                     </script>
                                                 <%
+                                                } else{
+                                                    %> 
+                                                    <!-- Kullanıcı adı şifre yanlış denilcek -->
+                                                    <%
                                                 }
                                                
 

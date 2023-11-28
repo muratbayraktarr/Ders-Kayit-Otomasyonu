@@ -1,3 +1,9 @@
+<%@page import="com.sqlKomutlari.LessonSQL"%>
+<%@page import="com.model.Teacher"%>
+<%@page import="com.sqlKomutlari.TeacherSQL"%>
+<%@page import="com.model.Department"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.sqlKomutlari.DepartmentSQL"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.db.MySQLVeritabaniBaglantisi" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -39,79 +45,104 @@
             </nav>
         </div><!-- End Page Title -->
 
-        <form action="" method="POST">
+        <form action="lessonekle.jsp" method="POST">
             <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">Ders Adı :</label>
                 <div class="col-sm-6 d-flex">
-                    <input type="text" class="form-control">
+                    <input type="text" name="name" class="form-control">
 
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="inputNumber" class="col-sm-2 col-form-label">Kapasite :</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control">
+                    <input type="number" name="capacity" class="form-control">
                 </div>
             </div>
+            
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Bölüm :</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select class="form-select" name="department" aria-label="Default select example">
+                        <option selected disabled>Open this select menu</option>
+                        <%                    
+                            DepartmentSQL veriIsleme = new DepartmentSQL();
+                            ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
+                            for (Department veri : veriListesiDepartment) {
+
+                               
+                        %>
+                        <option value="<%= veri.getId() %>"><%= veri.getName() %></option>
+                        <% } %>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Eğitmen :</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="teacher" aria-label="Default select example">
                         <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <%                    
+                            TeacherSQL veriIslemeTeacher = new TeacherSQL();
+                            ArrayList<Teacher> veriListesiTeacher = veriIslemeTeacher.TeacherGet();
+                            for (Teacher veri : veriListesiTeacher) {
+
+                                
+                        %>
+                        <option value="<%= veri.getId() %>"><%= veri.getName() %></option>
+                        <% } %>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Gün :</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="day" aria-label="Default select example">
                         <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="Pazartesi">Pazartesi</option>
+                        <option value="Salı">Salı</option>
+                        <option value="Çarşamba">Çarşamba</option>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Saat :</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name ="hours" aria-label="Default select example">
                         <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="09:00-10:00">09:00-10:00</option>
+                        <option value="10:00-11:00">10:00-11:00</option>
+                        <option value="11:00-12:00">11:00-12:00</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Seviye :</label>
+                <div class="col-sm-10">
+                    <select class="form-select" name="level" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">1. Sınıf</option>
+                        <option value="2">2. Sınıf</option>
+                        <option value="3">3. Sınıf</option>
+                        <option value="4">4. Sınıf</option>
                     </select>
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Sınıf :</label>
                 <div class="col-sm-10">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="class" aria-label="Default select example">
                         <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="A101">A101</option>
+                        <option value="A102">A102</option>
+                        <option value="A103">A103</option>
                     </select>
                 </div>
             </div>
 
             <button type="submit" class="btn btn-primary ms-2">Kaydet</button>
         </form>
-        <% // Veri kaydı yapılacak %>
+       
         <!-- Table with stripped rows -->
         <table class="table table-striped">
             <thead>
