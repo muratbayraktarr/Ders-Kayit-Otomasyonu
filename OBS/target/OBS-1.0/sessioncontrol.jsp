@@ -6,7 +6,7 @@
 try {
     String userRole = (String) session.getAttribute("userrole");
 
-    if (userRole != null && ((userRole.equals("Öğretmen") || userRole.equals("Öğrenci")))) {
+    if (userRole != null && ((userRole.equals("Admin") || ((userRole.equals("Öğretmen") || userRole.equals("Öğrenci")))) {
 %>
         <!-- Bu kısımda sayfanızın görüntülenmesi gereken HTML kodları olmalıdır -->
 <%

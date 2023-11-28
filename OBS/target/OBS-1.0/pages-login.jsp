@@ -74,60 +74,19 @@ try {
                                     <br/>
                                     <%
                                             if (request.getMethod().equalsIgnoreCase("POST")) {
-
                                                 String username = request.getParameter("username");
                                                 String password = request.getParameter("password");
 
-                                                Connection conn = null;
-                                                boolean isAuthenticated = false;
-                                                String successMessage = "";
-                                                String errorMessage = "";
-                                                try {
-                                                    conn = MySQLVeritabaniBaglantisi.baglantiyiAl();
-
-                                                    String sql = "SELECT KullaniciTipi,AdSoyad FROM users WHERE KullaniciAdi = ? AND Parola = ?";
-                                                    PreparedStatement statement = conn.prepareStatement(sql);
-                                                    statement.setString(1, username);
-                                                    statement.setString(2, password);
-
-                                                    ResultSet resultSet = statement.executeQuery();
-
-                                                    if (resultSet.next()) {
-                                                        // Kullanıcı girişi başarılı
-                                                        isAuthenticated = true;
-                                                        String userrole = resultSet.getString("KullaniciTipi");
-                                                        String name = resultSet.getString("AdSoyad");
-                                                        session.setAttribute("username", username);
-                                                        session.setAttribute("name", name);
-                                                        session.setAttribute("userrole", userrole);
-                                                        successMessage = "<div class=\"alert alert-success\">Kullanıcı Girişi Başarılı Yönlendiriliyorsunuz...</div>";
-                                                        out.println(successMessage);
-                                    
-                                                    }else{
-                                                        errorMessage = "<div class=\"alert alert-danger\">Kullanıcı Adı ya da Şifre Yanlış.</div>";
-                                                        out.println(errorMessage);
-                                                    }
-                                                }
-                                                catch (Exception e) {
-                                                    e.printStackTrace();
-                                                    errorMessage = "<div class=\"alert alert-danger\">Bağlantı Problemi !!</div>";
-                                                    out.println(errorMessage);
-                                                } finally {
-                                
-                                                    MySQLVeritabaniBaglantisi.baglantiyiKapat();
-                                                    %>
-                                                        <script>
-                                                            setTimeout(function () {
-
-                                                                window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
-                                                            }, 3000); // 3 saniye (3000 milisaniye) sonra yönlendirme yapacak
-                                                        </script>
-                                                    
-                                                    <%
-                                                }
+                                                
 
                                             }
                                     %>
+                                    <script>
+                                        setTimeout(function() {
+
+                                        window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
+                                        }, 3000); // 3 saniye (3000 milisaniye) sonra yönlendirme yapacak
+                                    </script>
                                 </div>
                             </div>
                         </div>

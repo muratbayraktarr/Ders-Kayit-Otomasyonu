@@ -32,28 +32,23 @@
                                     <form action="user-register.jsp" method="POST" class="row g-3 needs-validation" novalidate>
                                         <div class="col-12">
                                             <label for="yourName" class="form-label">İsim Soyisim</label>
-                                            <input type="text" name="name" class="form-control" id="yourName" required>
+                                            <input type="text" name="name" class="form-control" id="yourName" required maxlength="50">
                                                 <div class="invalid-feedback">Please, enter your name!</div>
                                         </div>
 
-                                        <div class="col-12">
-                                            <label for="yourEmail" class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control" id="yourEmail" required>
-                                                <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                                        </div>
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Kullanıcı Adı</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                                <input type="text" name="username" class="form-control" id="yourUsername" required maxlength="50">
                                                     <div class="invalid-feedback">Please choose a username.</div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Şifre</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required maxlength="255">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
 
@@ -64,6 +59,8 @@
                                                     <option selected disabled>Kullanıcı Tipi Seçiniz</option>
                                                     <option value="Öğrenci">Öğrenci</option>
                                                     <option value="Öğretmen">Öğretmen</option>
+                                                    <option value="Admin">Admin</option>
+                                                    
                                                 </select>
                                             </div>
                                         </div>
