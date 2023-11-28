@@ -1,0 +1,5 @@
+com\mycompany\obs\resources\JakartaEE10Resource.class
+com\sqlKomutlari\Login.class
+com\sqlKomutlari\addUser.class
+com\db\MySQLVeritabaniBaglantisi.class
+com\mycompany\obs\JakartaRestConfiguration.class

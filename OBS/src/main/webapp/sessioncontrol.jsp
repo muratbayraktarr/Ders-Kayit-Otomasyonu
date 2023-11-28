@@ -4,13 +4,12 @@
 
 <%
 try {
-    String userRole = (String) session.getAttribute("userrole");
+    String userRole = (String) session.getAttribute("role");
 
-    if (userRole != null && ((userRole.equals("Admin") || ((userRole.equals("Öğretmen") || userRole.equals("Öğrenci")))) {
-%>
-        <!-- Bu kısımda sayfanızın görüntülenmesi gereken HTML kodları olmalıdır -->
-<%
+    if (userRole != null && ((userRole.equals("Admin") || (userRole.equals("Öğretmen") || userRole.equals("Öğrenci"))))) {
+        
     } else {
+        System.out.println("Yetkisiz oldugunuzdan yönlendiriliyorsunuz..");
         response.sendRedirect("pages-login.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
     }
 } catch (Exception e) {

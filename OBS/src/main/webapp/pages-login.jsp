@@ -1,25 +1,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="com.db.MySQLVeritabaniBaglantisi" %>
+<%@ page import="com.sqlKomutlari.Login" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-try {
-    String userRole = (String) session.getAttribute("userrole");
-
-    if (userRole != null && ((userRole.equals("Öğretmen") || userRole.equals("Öğrenci")))) {
-    response.sendRedirect("index.jsp");
-%>
-<!-- Bu kısımda sayfanızın görüntülenmesi gereken HTML kodları olmalıdır -->
-<%
-    } else {
-         // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
-    }
-} catch (Exception e) {
-    // Hata durumunda burada hatayı işleyebilirsiniz, örneğin loglayabilir veya uygun bir hata sayfasına yönlendirebilirsiniz.
-    e.printStackTrace(); // Hata mesajını konsola yazdırabilirsiniz
-    response.sendRedirect("pages-login.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
-}
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,16 +61,35 @@ try {
                                                 String username = request.getParameter("username");
                                                 String password = request.getParameter("password");
 
+                                                Login login = new Login();
+                                                String message = login.loginRequest(username,password);
                                                 
+                                                
+                                                if(login.getDurum()){
+                                                    session.setAttribute("username",username);
+                                                    session.setAttribute("name",login.getName());
+                                                    session.setAttribute("role",login.getUserrole());
+                                                    System.out.println(login.getName());
+                                                    System.out.println(login.getUserrole());
+                                                    if(login.getUserrole().equals("Öğrenci")){
+                                                        session.setAttribute("faculty",login.getFaculty());
+                                                        session.setAttribute("department",login.getDepartment());
+                                                        session.setAttribute("level",login.getLevel());
+                                                    }
+                                                %> 
+                                                    <script>
+                                                        setTimeout(function() {
+
+                                                        window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
+                                                        }, 3000); // 3 saniye (3000 milisaniye) sonra yönlendirme yapacak
+                                                    </script>
+                                                <%
+                                                }
+                                               
 
                                             }
                                     %>
-                                    <script>
-                                        setTimeout(function() {
-
-                                        window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
-                                        }, 3000); // 3 saniye (3000 milisaniye) sonra yönlendirme yapacak
-                                    </script>
+                                    
                                 </div>
                             </div>
                         </div>
