@@ -44,7 +44,16 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-
+        <% String message = (String) session.getAttribute("message"); %>
+            <% if (message != null) { %>
+                <div style="color: red;">
+                    <%= message %>
+                    <% 
+                        message = null; 
+                        session.removeAttribute("message");
+                    %>
+                </div>
+            <% } %>
         <form action="lessonekle.jsp" method="POST">
             <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">Ders Adı :</label>

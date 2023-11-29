@@ -15,6 +15,8 @@
                 LessonSQL lessonsql = new LessonSQL();
                 String Message = lessonsql.LessonAdd(name,capacity,department,teacher,day,hours,level,classroom);
                 System.out.println(Message);
+                session.setAttribute("message", Message);
+
                 response.sendRedirect("lessonAdd.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
 
             }

@@ -48,8 +48,18 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+        <% String message = (String) session.getAttribute("message"); %>
+            <% if (message != null) { %>
+                <div style="color: red;">
+                    <%= message %>
+                    <% 
+                        message = null; 
+                        session.removeAttribute("message");
+                    %>
+                </div>
+            <% } %>
 
-        <form action="" method="POST">
+        <form action="departmentekle.jsp" method="POST">
             <div class="row mb-3">
                 <label for="inputText" class="col-sm-2 col-form-label">Bölüm Adı :</label>
                 <div class="col-sm-6 d-flex">
@@ -58,15 +68,7 @@
                 </div>
             </div>
         </form>
-        <% // Veri kaydı yapılacak
-            if (request.getMethod().equalsIgnoreCase("POST")) {
-                String name = request.getParameter("department_name");
-                DepartmentSQL d1 = new DepartmentSQL();
-                String Message = d1.DepartmentAdd(name);
-                System.out.println(Message);
-            }
-
-        %>
+       
         <!-- Table with stripped rows -->
         <table class="table table-striped">
             <thead>
