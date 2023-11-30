@@ -12,10 +12,7 @@
 
     <head>
         <%@ include file="head.jsp" %>
-
     </head>
-
-
 
 <body>
 
@@ -124,12 +121,6 @@
 
             </div><!-- End Customers Card -->
             <% } %>
-          
-
-           
-
-           
-
           </div>
         </div><!-- End Left side columns -->
 
@@ -138,10 +129,8 @@
 
              <% 
                 // Session'dan veri okuma
-
                     role = (String) session.getAttribute("role");
                     out.println("<h1>Session'dan Okunan Kullanıcı Rolü " + role + "</h1>");
-                
             %>
 
         </div><!-- End Right side columns -->

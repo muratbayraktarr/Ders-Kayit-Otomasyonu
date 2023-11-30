@@ -48,15 +48,22 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+               
         <% String message = (String) session.getAttribute("message"); %>
             <% if (message != null) { %>
-                <div style="color: red;">
-                    <%= message %>
+                
+              <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <i class="bi bi-info-circle me-1"></i>
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+                    
+                    
                     <% 
                         message = null; 
                         session.removeAttribute("message");
                     %>
-                </div>
+                
             <% } %>
 
         <form action="departmentekle.jsp" method="POST">
@@ -80,19 +87,23 @@
             </thead>
             <tbody>
                 <%                    
-                DepartmentSQL veriIsleme = new DepartmentSQL();
-                ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
-                for (Department veri : veriListesiDepartment) {
-
-                    System.out.println(veri.getId());
-                    System.out.println(veri.getName());
+                    DepartmentSQL veriIsleme = new DepartmentSQL();
+                    ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
+                    for (Department veri : veriListesiDepartment) {
                 %>
-                <tr>
-                    <td><%= veri.getId()%></td>
-                    <td><%= veri.getName()%></td>                   
-                </tr>
-                <% }%>
+                    <tr> 
+                        <td><%= veri.getId() %></td>
+                        <td><%= veri.getName() %></td>
+                        <td>
+                            <form action="DeleteDepartmentServlet" name ="silme" method="post">
+                                <input type="hidden" name="departmentId" value="<%= veri.getId() %>">
+                                <input type="submit" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
             </tbody>
+
         </table>
         <!-- End Table with stripped rows -->
 

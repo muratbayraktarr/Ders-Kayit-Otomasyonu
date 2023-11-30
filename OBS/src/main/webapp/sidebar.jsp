@@ -4,94 +4,121 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link " href="index.jsp">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
+        <li class="nav-item">
+            <a class="nav-link " href="index.jsp">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
 
-     <!-- End Components Nav -->
-     <% if(roleViews == 1){%>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Öğrenci</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Ders Seçimi</span>
+        <!-- End Components Nav -->
+        <% if (roleViews == 1) {%>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Öğrenci</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Ders Programı</span>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="forms-elements.html">
+                        <i class="bi bi-circle"></i><span>Ders Seçimi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="bi bi-circle"></i><span>Ders Programı</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-editors.html">
+                        <i class="bi bi-circle"></i><span>Bölüm Ders Programı</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="sifredegis.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Şifre Değiştir</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Forms Nav -->
+        <% } else if (roleViews == 2) { %>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Öğretmen</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>Bölüm Ders Programı</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Forms Nav -->
-       <% }else if(roleViews == 2){ %>
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Öğretmen</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Ders Seçimi</span>
-            </a>
-          </li>
-          <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Ders Programı</span>
-            </a>
-          </li>
-          <li>
-            <a href="forms-editors.html">
-              <i class="bi bi-circle"></i><span>Bölüm Ders Programı</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Forms Nav -->
-      <% }else if(roleViews == 3){ %>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="forms-elements.html">
+                        <i class="bi bi-circle"></i><span>Ders Seçimi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-layouts.html">
+                        <i class="bi bi-circle"></i><span>Ders Programı</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="forms-editors.html">
+                        <i class="bi bi-circle"></i><span>Bölüm Ders Programı</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="sifredegis.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Şifre Değiştir</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Forms Nav -->
+        <% } else if (roleViews == 3) { %>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-gem"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          
-          <li>
-            <a href="icons-bootstrap.html">
-              <i class="bi bi-circle"></i><span>Öğrenci İşlemleri</span>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gem"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-          </li>
-          <li>
-            <a href="lessonAdd.jsp">
-              <i class="bi bi-circle"></i><span>Ders İşlemleri</span>
-            </a>
-          </li>
-          <li>
-            <a href="departmentAdd.jsp">
-              <i class="bi bi-circle"></i><span>Bölüm İşlemleri</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-register.jsp">
-              <i class="bi bi-card-list"></i>
-              <span>Register</span>
-            </a>
-          </li><!-- End Register Page Nav -->
-        </ul>
-      </li><!-- End Icons Nav -->
-      <% } %>
-     
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="ogrencilistele.jsp">
+                        <i class="bi bi-circle"></i><span>Öğrencileri Listele</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lessonAdd.jsp">
+                        <i class="bi bi-circle"></i><span>Ders İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="departmentAdd.jsp">
+                        <i class="bi bi-circle"></i><span>Bölüm İşlemleri</span>
+                    </a>
+                </li
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="ogrencilistele.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Liste</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-register.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Register</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="sifredegis.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Şifre Değiştir</span>
+                    </a>
+                </li>
+
+                <!-- End Register Page Nav -->
+            </ul>
+        </li><!-- End Icons Nav -->
+        <% }%>
+
 
     </ul>
 
-  </aside>
+</aside>

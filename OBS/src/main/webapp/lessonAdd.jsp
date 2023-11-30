@@ -13,6 +13,7 @@
 <%@ include file="kullanicitipi.jsp" %>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +45,17 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+               
         <% String message = (String) session.getAttribute("message"); %>
             <% if (message != null) { %>
-                <div style="color: red;">
+                
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <i class="bi bi-info-circle me-1"></i>
                     <%= message %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                        
+                             
                     <% 
                         message = null; 
                         session.removeAttribute("message");

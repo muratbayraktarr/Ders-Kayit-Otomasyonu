@@ -7,6 +7,8 @@ package com.sqlKomutlari;
 import com.db.MySQLVeritabaniBaglantisi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 /**
@@ -23,28 +25,31 @@ public class addUser {
             conn = db.baglantiyiAl();
             if (conn != null) {
                 System.out.println("Başarılı");
+                if (!isUsernameExists(conn, username)) {
+                    String insertSQL = "INSERT INTO users (name, username, password, role) VALUES (?, ?, ?, ?)";
 
-                String insertSQL = "INSERT INTO users (name, username, password, role) VALUES (?, ?, ?, ?)";
+                    PreparedStatement statement = conn.prepareStatement(insertSQL);
+                    statement.setString(1, name);
+                    statement.setString(2, username);
+                    statement.setString(3, password);
+                    statement.setString(4, userrole);
+                    int rowsInserted = 0;
 
-                PreparedStatement statement = conn.prepareStatement(insertSQL);
-                statement.setString(1, name);
-                statement.setString(2, username);
-                statement.setString(3, password);
-                statement.setString(4, userrole);
-                int rowsInserted = 0;
+                    try {
+                        rowsInserted = statement.executeUpdate();
+                        System.out.println(rowsInserted);
+                    } catch (Exception e) {
+                        rowsInserted = 0;
+                    }
 
-                try {
-                    rowsInserted = statement.executeUpdate();
-                    System.out.println(rowsInserted);
-                } catch (Exception e) {
-                    rowsInserted = 0;
-                }
+                    if (rowsInserted > 0) {
+                        Message = "Veri Başarıyla Kaydedildi.";
 
-                if (rowsInserted > 0) {
-                    Message = "Veri Başarıyla Kaydedildi.";
-                    
+                    } else {
+                        Message = "Kaydetme işlemi başarısız.";
+                    }
                 } else {
-                    Message = "Kaydetme işlemi başarısız.";
+                    Message = "Kullanıcı adı kullanılmaktadır. Lütfen başka bir kullanıcı adı giriniz";
                 }
             } else {
                 Message = "Bağlantı hatası: Bağlantı null veya kapalı.";
@@ -64,5 +69,18 @@ public class addUser {
         addUser a1 = new addUser();
         Message2 = a1.userAdd("Murat Bayraktar","mazarat2002","murat123","admin");
         System.out.println(Message2);
+    }
+    private boolean isUsernameExists(Connection conn, String username) throws SQLException {
+        String query = "SELECT COUNT(*) FROM users WHERE username = ?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, username);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+        return false;
     }
 }

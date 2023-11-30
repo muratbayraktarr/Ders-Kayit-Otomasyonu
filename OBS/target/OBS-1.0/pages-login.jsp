@@ -57,44 +57,51 @@
                                     </form>
                                     <br/>
                                     <%
-                                            if (request.getMethod().equalsIgnoreCase("POST")) {
-                                                String username = request.getParameter("username");
-                                                String password = request.getParameter("password");
+                                        if (request.getMethod().equalsIgnoreCase("POST")) {
+                                            String username = request.getParameter("username");
+                                            String password = request.getParameter("password");
 
-                                                Login login = new Login();
-                                                String message = login.loginRequest(username,password);
-                                                
-                                                
-                                                if(login.getDurum()){
-                                                    session.setAttribute("username",username);
-                                                    session.setAttribute("name",login.getName());
-                                                    session.setAttribute("role",login.getUserrole());
-                                                    System.out.println(login.getName());
-                                                    System.out.println(login.getUserrole());
-                                                    if(login.getUserrole().equals("Öğrenci")){
-                                                        session.setAttribute("faculty",login.getFaculty());
-                                                        session.setAttribute("department",login.getDepartment());
-                                                        session.setAttribute("level",login.getLevel());
-                                                    }
-                                                %> 
-                                                <!-- Giriş başarılı yönlendiriliyorsunuz yazacak -->
-                                                    <script>
-                                                        setTimeout(function() {
-                                                            
-                                                        window.location.href = "index.jsp"; // Yönlendirilmek istediğiniz sayfanın adını buraya yazın
-                                                        }, 2000); // 2 saniye (2000 milisaniye) sonra yönlendirme yapacak
-                                                    </script>
-                                                <%
-                                                } else{
-                                                    %> 
-                                                    <!-- Kullanıcı adı şifre yanlış denilcek -->
-                                                    <%
+                                            Login login = new Login();
+                                            String message = login.loginRequest(username, password);
+
+                                            if (login.getDurum()) {
+                                                session.setAttribute("username", username);
+                                                session.setAttribute("name", login.getName());
+                                                session.setAttribute("role", login.getUserrole());
+                                                session.setAttribute("password", password);
+                                                System.out.println(login.getName());
+                                                System.out.println(login.getUserrole());
+                                                if (login.getUserrole().equals("Öğrenci")) {
+                                                    session.setAttribute("faculty", login.getFaculty());
+                                                    session.setAttribute("department", login.getDepartment());
+                                                    session.setAttribute("level", login.getLevel());
                                                 }
-                                               
-
-                                            }
-                                    %>
+                                    %> 
+                                    <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+                                        Girişiniz başarılı, yönlendiriliyorsunuz...
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    <script>
+                                        setTimeout(function () {
+                                            window.location.href = "index.jsp";// Yönlendirilmek istediğiniz sayfanın adını buraya yazın
+                                        }, 1000); // 1 saniye (1000 milisaniye) sonra yönlendirme yapacak
+                                    </script>
                                     
+                                    <!--burada else gelecek-->
+                                    
+                                    <%
+                                            }
+                                            else{
+                                            %> 
+                                                <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+                                                    Kullanıcı Adı ya da Şifre Yanlış.
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            <%
+                                            }
+                                        }
+                                    %>
+
                                 </div>
                             </div>
                         </div>

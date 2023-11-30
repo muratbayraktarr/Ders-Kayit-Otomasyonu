@@ -20,7 +20,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                           
+
                             <div class="card mb-3">
 
                                 <div class="card-body">
@@ -53,45 +53,52 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <div class="col-12" id="userRole" >
-                                                <label for="userRole" class="col-sm-10 col-form-label">Kullanıcı Tipi</label>
-                                                <select class="form-select" name="userrole" aria-label="Default select example" required>
-                                                    <option selected disabled>Kullanıcı Tipi Seçiniz</option>
-                                                    <option value="Öğrenci">Öğrenci</option>
-                                                    <option value="Öğretmen">Öğretmen</option>
-                                                    <option value="Admin">Admin</option>
-                                                    
-                                                </select>
+                                            <div class="col-12">
+                                                <div class="col-12" id="userRole">
+                                                    <label for="userRole" class="col-sm-10 col-form-label">Kullanıcı Tipi</label>
+                                                    <select class="form-select" name="userrole" aria-label="Default select example" required onchange="handleUserRoleChange()">
+                                                        <option selected disabled>Kullanıcı Tipi Seçiniz</option>
+                                                        <option value="Öğrenci">Öğrenci</option>
+                                                        <option value="Öğretmen">Öğretmen</option>
+                                                        <option value="Admin">Admin</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
 
-
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" disabled type="submit">Create Account</button>
-                                        </div>
+                                            <div class="col-12" id="additionalInputs" style="display:none;">
+                                                <br>
+                                                <input type="text" name="bolum" class="form-control" id="yourInput1" required/><br>
+                                                <input type="text" name="level" class="form-control" id="yourInput2" required/>
+                                            </div>
+                                            <br>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary w-100" disabled type="submit">Create Account</button>
+                                            </div>
 
                                     </form>
                                     <script>
                                         // Kullanıcı tipi seçildiğinde çağrılacak fonksiyon
                                         function handleUserRoleChange() {
-                                            var userRoleSelect = document.getElementById("userRole");
+                                            var userRoleSelect = document.querySelector("select[name='userrole']");
                                             var createAccountButton = document.querySelector("button[type='submit']");
+                                            var additionalInputs = document.getElementById("additionalInputs");
 
-                                            if (userRoleSelect.value !== "Kullanıcı Tipi Seçiniz") {
+                                            if (userRoleSelect.value === "Öğrenci") {
                                                 createAccountButton.removeAttribute("disabled");
+                                                additionalInputs.style.display = "block";
                                             } else {
-                                                createAccountButton.setAttribute("disabled", "disabled");
+                                                additionalInputs.style.display = "none";
+                                                
                                             }
                                         }
-
-                                        // Kullanıcı tipi seçimi değişikliklerini dinlemek için olay dinleyicisi ekle
-                                        document.getElementById("userRole").addEventListener("change", handleUserRoleChange);
                                     </script>
+
+
 
                                 </div>
                             </div>
 
-                           
+
                         </div>
                     </div>
                 </div>

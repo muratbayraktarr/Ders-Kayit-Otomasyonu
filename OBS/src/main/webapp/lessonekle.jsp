@@ -20,5 +20,9 @@
                 response.sendRedirect("lessonAdd.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
 
             }
+            else{
+                response.sendRedirect("lessonAdd.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
+
+            }
 // Veri kaydı yapılacak 
         %>
