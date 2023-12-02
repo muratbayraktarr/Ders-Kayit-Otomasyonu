@@ -7,6 +7,14 @@
 <%@ include file ="kullanicitipi.jsp" %>
 <%@ include file="sessioncontrol.jsp" %>
 
+
+<%  try {
+        if (roleViews != 3) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
+%>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,17 +34,17 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Öğrenci Bilgi</h1>
+            <h1>Admin Bilgi</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="index.jsp">Anasayfa</a></li>
                     <li class="breadcrumb-item active"><%= (String) session.getAttribute("role")%></li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
 
         <div class="card-body">
-            <h5 class="card-title">Default List Group</h5>
+            <h5 class="card-title">Öğrenci Listesi</h5>
             <%
                 StudentListSQL veriIsleme = new StudentListSQL();
                 ArrayList<Student> veriListesiStudent = veriIsleme.StudentGet();
@@ -49,7 +57,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">İsim Soyisim</th>
-                        <th scope="col">Fakülte</th>
                         <th scope="col">Bölüm</th>
                         <th scope="col">Sınıf</th>
                     </tr>
@@ -59,11 +66,10 @@
                     <tr>
                         <th scope="row"><%= ++a %></th>
                         <td><%= veri.getName()%></td>
-                        <td><%= veri.getFaculty()%></td>
                         <td><%= veri.getDepartment()%></td>
                         <td><%= veri.getLevel()%></td>
                     </tr>                   
-                    <% }%>
+                <% }%>
                 </tbody>
             </table>    
             
@@ -83,3 +89,11 @@
         <script src="assets/js/main.js"></script>
     </body>
 </html>
+
+
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

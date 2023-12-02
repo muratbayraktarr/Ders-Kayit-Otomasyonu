@@ -4,6 +4,8 @@
  */
 package com.model;
 
+import com.sqlKomutlari.DepartmentSQL;
+
 /**
  *
  * @author ByMazarat
@@ -15,10 +17,18 @@ public class Student {
     private String username;
     private String password;
     private String role;
-    private String faculty;
     private String department;
     private int level;
+    private int departmentId;
 
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+ 
     public int getId() {
         return id;
     }
@@ -39,10 +49,6 @@ public class Student {
         return role;
     }
 
-    public String getFaculty() {
-        return faculty;
-    }
-
     public String getDepartment() {
         return department;
     }
@@ -51,14 +57,13 @@ public class Student {
         return level;
     }
 
-    public Student(int id, String name, String username, String password, String role, String faculty, String department, int level) {
+    public Student(int id, String name, String username, String password, String role, int departmentid, int level) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.faculty = faculty;
-        this.department = department;
+        this.departmentId = departmentid;
         this.level = level;
     }
 

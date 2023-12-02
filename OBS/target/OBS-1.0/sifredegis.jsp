@@ -4,6 +4,9 @@
 <%@ include file="sessioncontrol.jsp" %>
 
 
+<%  try {
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -80,3 +83,9 @@
     <script src="assets/js/main.js"></script>
 </body>
 </html>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

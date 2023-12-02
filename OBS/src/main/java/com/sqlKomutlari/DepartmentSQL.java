@@ -22,7 +22,7 @@ public class DepartmentSQL {
         MySQLVeritabaniBaglantisi veritabaniBaglantisi = new MySQLVeritabaniBaglantisi();
         Connection conn = null;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        ResultSet resultSetDepartment = null;
         String name = null;
         try {
             conn = veritabaniBaglantisi.baglantiyiAl();
@@ -30,11 +30,11 @@ public class DepartmentSQL {
             statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
 
-            resultSet = statement.executeQuery();
+            resultSetDepartment = statement.executeQuery();
 
-            while (resultSet.next()) {
+            while (resultSetDepartment.next()) {
                 try {
-                    name = resultSet.getString("department_name");
+                    name = resultSetDepartment.getString("department_name");
                     
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -46,8 +46,8 @@ public class DepartmentSQL {
             System.out.println("SQL hatası oluştu");
         } finally {
             try {
-                if (resultSet != null) {
-                    resultSet.close();
+                if (resultSetDepartment != null) {
+                    resultSetDepartment.close();
                 }
                 if (statement != null) {
                     statement.close();
@@ -169,6 +169,9 @@ public class DepartmentSQL {
         }
         return false;
     }
-
+    public static void main(String[] args) {
+        DepartmentSQL d1 = new DepartmentSQL();
+        System.out.println(d1.DepartmentGetId(25)); 
+    }
     
 }

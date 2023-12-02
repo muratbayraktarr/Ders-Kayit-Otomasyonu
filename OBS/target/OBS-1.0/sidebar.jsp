@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%  try {
+
+
+%>
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -83,6 +87,12 @@
                         <i class="bi bi-circle"></i><span>Öğrencileri Listele</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="ogretmenlerilistele.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Öğretmenleri Listele</span>
+                    </a>
+                </li>
                 <li>
                     <a href="lessonAdd.jsp">
                         <i class="bi bi-circle"></i><span>Ders İşlemleri</span>
@@ -93,12 +103,7 @@
                         <i class="bi bi-circle"></i><span>Bölüm İşlemleri</span>
                     </a>
                 </li
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="ogrencilistele.jsp">
-                        <i class="bi bi-circle"></i>
-                        <span>Liste</span>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="pages-register.jsp">
                         <i class="bi bi-circle"></i>
@@ -111,7 +116,7 @@
                         <span>Öğrenci Kayıt</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="sifredegis.jsp">
                         <i class="bi bi-circle"></i>
@@ -128,3 +133,10 @@
     </ul>
 
 </aside>
+
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

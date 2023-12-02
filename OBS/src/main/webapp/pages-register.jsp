@@ -7,6 +7,12 @@
 <%@ include file="kullanicitipi.jsp" %>
 
 
+<%  try {
+        if (roleViews != 3) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,3 +129,10 @@
 </body>
 
 </html>
+
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

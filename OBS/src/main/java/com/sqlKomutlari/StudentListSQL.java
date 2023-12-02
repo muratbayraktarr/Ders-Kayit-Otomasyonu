@@ -17,7 +17,8 @@ import java.util.ArrayList;
  * @author ByMazarat
  */
 public class StudentListSQL {
-     public ArrayList<Student> StudentGet() {
+    
+    public ArrayList<Student> StudentGet() {
         ArrayList<Student> veriListesi = new ArrayList<Student>();
         MySQLVeritabaniBaglantisi veritabaniBaglantisi = new MySQLVeritabaniBaglantisi();
         Connection conn = null;
@@ -29,24 +30,22 @@ public class StudentListSQL {
             statement = conn.prepareStatement(sql);
             statement.setString(1, "Öğrenci");
             resultSet = statement.executeQuery();
-
             while (resultSet.next()) {
                 try {
                     int id = resultSet.getInt("user_id");
                     String name = resultSet.getString("name");
                     String username = resultSet.getString("username");
-                    String password= resultSet.getString("password");
-                    String role= resultSet.getString("role");
-                    String faculty = resultSet.getString("faculty");
-                    String department = resultSet.getString("department");
+                    String password = resultSet.getString("password");
+                    String role = resultSet.getString("role");
+                    int departmentid = resultSet.getInt("department_id");
                     int level = resultSet.getInt("level");
                     
-                    Student student = new Student(id, name, username, password, role, faculty, department, level);
+                    Student student = new Student(id, name, username, password, role, departmentid, level);
                     veriListesi.add(student);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,8 +64,21 @@ public class StudentListSQL {
                 System.out.println("Bağlantı kapatılamadı");
             }
         }
-
+        
+        for(Student veri : veriListesi){
+            DepartmentSQL d1 = new DepartmentSQL();
+            String department = d1.DepartmentGetId(veri.getDepartmentId());
+            veri.setDepartment(department);
+        }
+        
         return veriListesi;
-
+        
+    }
+    
+    public static void main(String[] args) {
+        StudentListSQL veriIsleme = new StudentListSQL();
+        ArrayList<Student> veriListesiStudent = veriIsleme.StudentGet();
+        for (Student veri : veriListesiStudent)
+        System.out.println(veri.getName());
     }
 }

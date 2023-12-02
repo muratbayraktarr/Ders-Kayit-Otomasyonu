@@ -4,6 +4,16 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ include file="sessioncontrol.jsp" %>
+<%@ include file="kullanicitipi.jsp" %>
+
+
+<%  try {
+        if (roleViews != 3) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
+%>
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -122,6 +132,11 @@
 </html>
 
 
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 
+%>
 
 

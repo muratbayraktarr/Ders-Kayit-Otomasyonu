@@ -10,7 +10,7 @@
 <%@ include file="sessioncontrol.jsp" %>
 
 <%    try {
-
+        if (roleViews == 1) {
 
 %>
 
@@ -71,18 +71,18 @@
                         <%
                             LessonSQL lesson = new LessonSQL();
                             ArrayList<Lesson> LessonList = lesson.getLesson();
-                            
+
                             for (Lesson veri : LessonList) {
                                 if (veri.getLevel() == (Integer) session.getAttribute("level") && veri.getDepartment_id() == (Integer) session.getAttribute("department")) {
 
                         %>
-                        
-                        <option value="<%= veri.getId()%>-<%= veri.getCapacity() %>-<%= veri.getMax_capacity() %>">
+
+                        <option value="<%= veri.getId()%>-<%= veri.getCapacity()%>-<%= veri.getMax_capacity()%>">
                             <%= veri.getName()%> - <%= veri.getCapacity()%>/<%= veri.getMax_capacity()%> - <%= veri.getInstructor()%> 
 
                         </option>
-                        
-      
+
+
 
                         <%
                                 }
@@ -90,6 +90,7 @@
                         %> 
                         <!-- Diğer dersler buraya eklenebilir -->
                     </select>
+
 
                 </div>
 
@@ -99,7 +100,6 @@
                     Gönder
                 </button>
             </form>
-            
 
         </div>
 
@@ -122,6 +122,10 @@
 </body>
 </html>
 <%
+        } else {
+            response.sendRedirect("pages-error-404.jsp");
+
+        }
     } catch (Exception e) {
         e.printStackTrace();
     }

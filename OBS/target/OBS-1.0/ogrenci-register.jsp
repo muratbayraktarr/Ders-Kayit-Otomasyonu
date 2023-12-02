@@ -10,12 +10,10 @@
 <%@ include file="kullanicitipi.jsp" %>
 
 <%  try {
-        if(roleViews != 3){
-        response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
-    }    
-    } catch (Exception e) {
-    }
-    
+        if (roleViews != 3) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
 %>
 
 <!DOCTYPE html>
@@ -67,60 +65,59 @@
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
 
-                                        
-                                            
-                                            <div class="col-12">
-                                                <label for="department" class="form-label">Bölüm :</label>
-                                                <select class="form-select" name="department" id ="department" aria-label="Default select example" onchange="handleUserRoleChange()">
-                                                    <option selected disabled>Open this select menu</option>
-                                                    <%
-                                                        DepartmentSQL veriIsleme = new DepartmentSQL();
-                                                        ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
-                                                        for (Department veri : veriListesiDepartment) {
 
 
-                                                    %>
-                                                    <option value="<%= veri.getId()%>"><%= veri.getName()%></option>
-                                                    <% }%>
-                                                </select>
-                                            </div>
-                                        
-                                                
-                                        
-                                                    
-                                        
-                                           
-                                            <div class="col-12">
-                                                <label  for="level" class="form-label">Seviye :</label>
-                                                <select class="form-select" name="level" id="level" aria-label="Default select example" onchange="handleUserRoleChange()">
-                                                    <option disabled selected>Open this select menu</option>
-                                                    <option value="1">1. Sınıf</option>
-                                                    <option value="2">2. Sınıf</option>
-                                                    <option value="3">3. Sınıf</option>
-                                                    <option value="4">4. Sınıf</option>
-                                                </select>
-                                            </div>
-                                        
+                                        <div class="col-12">
+                                            <label for="department" class="form-label">Bölüm :</label>
+                                            <select class="form-select" name="department" id ="department" aria-label="Default select example" onchange="handleUserRoleChange()">
+                                                <option selected disabled>Open this select menu</option>
+                                                <%                                                        DepartmentSQL veriIsleme = new DepartmentSQL();
+                                                    ArrayList<Department> veriListesiDepartment = veriIsleme.DepartmentGet();
+                                                    for (Department veri : veriListesiDepartment) {
+
+
+                                                %>
+                                                <option value="<%= veri.getId()%>"><%= veri.getName()%></option>
+                                                <% }%>
+                                            </select>
+                                        </div>
+
+
+
+
+
+
+                                        <div class="col-12">
+                                            <label  for="level" class="form-label">Seviye :</label>
+                                            <select class="form-select" name="level" id="level" aria-label="Default select example" onchange="handleUserRoleChange()">
+                                                <option disabled selected>Open this select menu</option>
+                                                <option value="1">1. Sınıf</option>
+                                                <option value="2">2. Sınıf</option>
+                                                <option value="3">3. Sınıf</option>
+                                                <option value="4">4. Sınıf</option>
+                                            </select>
+                                        </div>
+
 
                                         <button class="btn btn-primary w-100" disabled type="submit">Create Account</button>
                                 </div>
 
                                 </form>
                                 <script>
-                                        // Kullanıcı tipi seçildiğinde çağrılacak fonksiyon
-                                        function handleUserRoleChange() {
-                                            var userDepartmentSelect = document.querySelector("select[name='department']");
-                                            var userLevelSelect = document.querySelector("select[name='level']");
-                                            
-                                            var createAccountButton = document.querySelector("button[type='submit']");
+                                    // Kullanıcı tipi seçildiğinde çağrılacak fonksiyon
+                                    function handleUserRoleChange() {
+                                        var userDepartmentSelect = document.querySelector("select[name='department']");
+                                        var userLevelSelect = document.querySelector("select[name='level']");
 
-                                            if (userDepartmentSelect.value != "Open this select menu" && userLevelSelect.value != "Open this select menu") {
-                                                createAccountButton.disabled = false; // Admin veya Öğretmen seçildiğinde butonu etkinleştir
-                                            } else {
-                                                createAccountButton.disabled = true; // Diğer durumda butonu devre dışı bırak
-                                            }
+                                        var createAccountButton = document.querySelector("button[type='submit']");
+
+                                        if (userDepartmentSelect.value != "Open this select menu" && userLevelSelect.value != "Open this select menu") {
+                                            createAccountButton.disabled = false; // Admin veya Öğretmen seçildiğinde butonu etkinleştir
+                                        } else {
+                                            createAccountButton.disabled = true; // Diğer durumda butonu devre dışı bırak
                                         }
-                                    </script>
+                                    }
+                                </script>
                             </div>
                         </div>
 
@@ -152,3 +149,9 @@
 </body>
 
 </html>
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

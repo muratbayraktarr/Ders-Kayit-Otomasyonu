@@ -1,0 +1,98 @@
+<%@page import="com.model.Teacher"%>
+<%@page import="com.sqlKomutlari.TeacherSQL"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+
+<%@ include file ="kullanicitipi.jsp" %>
+<%@ include file="sessioncontrol.jsp" %>
+
+
+<%  try {
+        if (roleViews != 3) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
+%>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%@ include file="head.jsp" %>
+    </head>
+    <body>
+        <!-- ======= Header ======= -->
+        <%@ include file="header.jsp" %>
+
+        <!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <%@ include file="sidebar.jsp" %>
+
+        <!-- End Sidebar-->
+        <!-- ======= Page Title ======= -->
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Admin Bilgi</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.jsp">Anasayfa</a></li>
+                    <li class="breadcrumb-item active"><%= (String) session.getAttribute("role")%></li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <div class="card-body">
+            <h5 class="card-title">Öğretmen Listesi</h5>
+            <%
+                TeacherSQL veriIslemeTeacher = new TeacherSQL();
+                ArrayList<Teacher> veriListesiTeacher = veriIslemeTeacher.TeacherGet();
+                int a = 0;
+            %>
+            <!-- Default List group -->
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">İsim Soyisim</th>
+                    
+                    </tr>
+                </thead>
+                <tbody>
+                <% for (Teacher veri : veriListesiTeacher) {%>                
+                    <tr>
+                        <th scope="row"><%= ++a %></th>
+                        <td><%= veri.getName()%></td>
+                        
+                    </tr>                   
+                <% }%>
+                </tbody>
+            </table>    
+            
+        </div>
+        <!-- Bootstrap JS ve Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/chart.js/chart.umd.js"></script>
+        <script src="assets/vendor/echarts/echarts.min.js"></script>
+        <script src="assets/vendor/quill/quill.min.js"></script>
+        <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+        <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
+
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>

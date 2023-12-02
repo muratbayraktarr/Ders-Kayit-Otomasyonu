@@ -4,6 +4,14 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ include file="kullanicitipi.jsp" %>
+
+<%  try {
+        if (roleViews != 0) {
+            response.sendRedirect("index.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
+
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -131,3 +139,10 @@
 </body>
 
 </html>
+
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+%>
