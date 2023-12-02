@@ -90,7 +90,10 @@
                                     <a href="pages-register.jsp" >
                                         <button class="btn btn-primary rounded-pill w-100">Yeni Kullanıcı Kayıt Et</button>
                                     </a>
-
+                                    <br/><br/>
+                                    <a href="index.jsp" >
+                                        <button class="btn btn-primary rounded-pill w-100">Anasayfa</button>
+                                    </a>
 
                                 </div>
                             </div>

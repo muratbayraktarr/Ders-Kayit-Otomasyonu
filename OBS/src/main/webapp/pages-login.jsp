@@ -65,6 +65,7 @@
                                             String message = login.loginRequest(username, password);
 
                                             if (login.getDurum()) {
+                                                session.setAttribute("user_id", login.getId());
                                                 session.setAttribute("username", username);
                                                 session.setAttribute("name", login.getName());
                                                 session.setAttribute("role", login.getUserrole());
@@ -72,7 +73,6 @@
                                                 System.out.println(login.getName());
                                                 System.out.println(login.getUserrole());
                                                 if (login.getUserrole().equals("Öğrenci")) {
-                                                    session.setAttribute("faculty", login.getFaculty());
                                                     session.setAttribute("department", login.getDepartment());
                                                     session.setAttribute("level", login.getLevel());
                                                 }

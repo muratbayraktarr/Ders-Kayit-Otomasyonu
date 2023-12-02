@@ -1,3 +1,4 @@
+<%@page import="com.sqlKomutlari.DepartmentSQL"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.db.MySQLVeritabaniBaglantisi" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -103,15 +104,17 @@
 
               <div class="card info-card customers-card">
 
-               
+               <% 
+                    DepartmentSQL d1 = new DepartmentSQL();
+                    String departmentName = d1.DepartmentGetId((Integer) session.getAttribute("department"));
+               %>
                 <div class="card-body">
-                  <h5 class="card-title">Fakülte </h5>
+                  <h5 class="card-title"><%= departmentName %></h5>
 
                   <div class="d-flex align-items-center">
                     
                     <div class="ps-3">
-                      <h6 style="font-size: 160%;"><%= (String) session.getAttribute("faculty") %></h6>
-                      <span class="text-danger small pt-1 fw-bold"><%= (Integer) session.getAttribute("level") %>. Sınıf</span> 
+                      <h6 style="font-size: 160%;"><%= (Integer) session.getAttribute("level") %>. Sınıf</h6>
 
                     </div>
                   </div>

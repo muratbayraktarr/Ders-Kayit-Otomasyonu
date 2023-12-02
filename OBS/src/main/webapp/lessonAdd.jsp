@@ -1,3 +1,4 @@
+<%@page import="com.model.Lesson"%>
 <%@page import="com.sqlKomutlari.LessonSQL"%>
 <%@page import="com.model.Teacher"%>
 <%@page import="com.sqlKomutlari.TeacherSQL"%>
@@ -119,6 +120,9 @@
                         <option value="Pazartesi">Pazartesi</option>
                         <option value="Salı">Salı</option>
                         <option value="Çarşamba">Çarşamba</option>
+                        <option value="Çarşamba">Perşembe</option>
+                        <option value="Çarşamba">Cuma</option>
+
                     </select>
                 </div>
             </div>
@@ -130,6 +134,12 @@
                         <option value="09:00-10:00">09:00-10:00</option>
                         <option value="10:00-11:00">10:00-11:00</option>
                         <option value="11:00-12:00">11:00-12:00</option>
+                        <option value="12:00-13:00">12:00-13:00</option>
+                        <option value="13:00-14:00">13:00-14:00</option>
+                        <option value="14:00-15:00">14:00-15:00</option>
+                        <option value="15:00-16:00">15:00-16:00</option>
+                        <option value="16:00-17:00">16:00-17:00</option>
+                        <option value="17:00-18:00">17:00-18:00</option>                        
                     </select>
                 </div>
             </div>
@@ -153,60 +163,50 @@
                         <option value="A101">A101</option>
                         <option value="A102">A102</option>
                         <option value="A103">A103</option>
+                        <option value="C09">C09</option>
+                        <option value="C10">C10</option>
+                        <option value="C02">C02</option>                 
+
                     </select>
                 </div>
             </div>
 
             <button type="submit" class="btn btn-primary ms-2">Kaydet</button>
         </form>
-       
+                    <br/>
         <!-- Table with stripped rows -->
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Start Date</th>
+                    <th scope="col">Ders Adı</th>
+                    <th scope="col">Kapasite</th>
+                    <th scope="col">Eğitmen</th>
+                    <th scope="col">Gün / Saat</th>
+                    <th scope="col">Sınıf</th>
+                    <th scope="col">Düzey</th>
+                    <th scope="col">Bölüm</th>                   
                 </tr>
             </thead>
             <tbody>
+                <% 
+                    LessonSQL veriCek = new LessonSQL(); 
+                    ArrayList<Lesson> LessonList = veriCek.getLesson();
+                    for(Lesson lesson : LessonList)
+                    {
+                %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                    <td>2016-05-25</td>
+                    <th scope="row"><%= lesson.getId() %></th>
+                    <td><%= lesson.getName()%></td>
+                    <td><%= lesson.getCapacity()%>/<%= lesson.getMax_capacity() %></td>
+                    <td><%= lesson.getInstructor() %></td>
+                    <td><%= lesson.getDay() %> / <%= lesson.getHours() %></td>
+                    <td><%= lesson.getClassroom() %></td>
+                    <td><%= lesson.getLevel() %>. Sınıf</td>
+                    <td><%= lesson.getDepartment() %></td>
+                    
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                    <td>2014-12-05</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                    <td>2011-08-12</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                    <td>2012-06-11</td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                    <td>2011-04-19</td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
         <!-- End Table with stripped rows -->

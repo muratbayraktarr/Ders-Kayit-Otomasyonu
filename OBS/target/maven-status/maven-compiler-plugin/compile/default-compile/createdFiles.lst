@@ -11,4 +11,5 @@ com\sqlKomutlari\addUser.class
 com\db\MySQLVeritabaniBaglantisi.class
 com\model\Lesson.class
 com\sqlKomutlari\ChangePassword.class
+com\sqlKomutlari\LessonAndStudent.class
 com\sqlKomutlari\TeacherSQL.class

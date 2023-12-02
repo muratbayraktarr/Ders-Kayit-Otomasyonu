@@ -15,14 +15,18 @@ import java.sql.ResultSet;
  * @author 90507
  */
 public class Login {
+    private int id;
     private String userrole;
     private String name;
     private String message;
-    private String faculty;
-    private String department;
+    private int department;
     private int level;
     private boolean isAuthenticated = false;
 
+     public int getId(){
+        return id;
+    }
+    
     public boolean getDurum(){
         return isAuthenticated;
     }
@@ -31,11 +35,8 @@ public class Login {
         return userrole;
     }
     
-    public String getFaculty() {
-        return faculty;
-    }
-    
-    public String getDepartment() {
+   
+    public int getDepartment() {
         return department;
     }
     
@@ -78,11 +79,11 @@ public class Login {
                 String name2 = resultSet.getString("name");
                 this.name = name2;
                 this.userrole = userrole2;
+                this.id = resultSet.getInt("user_id");
                 successMessage = "<div class=\"alert alert-success\">Kullanıcı Girişi Başarılı Yönlendiriliyorsunuz...</div>";
                 this.message = successMessage;
                 if(userrole2.equals("Öğrenci")){
-                    this.department = resultSet.getString("department");
-                    this.faculty = resultSet.getString("faculty");
+                    this.department = resultSet.getInt("department_id");
                     this.level = resultSet.getInt("level");
                 }
             } else {

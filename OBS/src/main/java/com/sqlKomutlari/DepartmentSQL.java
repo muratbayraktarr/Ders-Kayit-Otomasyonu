@@ -18,6 +18,51 @@ import java.sql.SQLException;
  */
 public class DepartmentSQL {
 
+    public String DepartmentGetId(int id){
+        MySQLVeritabaniBaglantisi veritabaniBaglantisi = new MySQLVeritabaniBaglantisi();
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        String name = null;
+        try {
+            conn = veritabaniBaglantisi.baglantiyiAl();
+            String sql = "SELECT * FROM departments WHERE department_id = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                try {
+                    name = resultSet.getString("department_name");
+                    
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL hatası oluştu");
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                veritabaniBaglantisi.baglantiyiKapat();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Bağlantı kapatılamadı");
+            }
+        }
+
+        return name;
+
+    }
+    
     public ArrayList<Department> DepartmentGet() {
         ArrayList<Department> veriListesi = new ArrayList<Department>();
         MySQLVeritabaniBaglantisi veritabaniBaglantisi = new MySQLVeritabaniBaglantisi();

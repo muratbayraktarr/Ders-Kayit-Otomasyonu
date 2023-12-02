@@ -19,7 +19,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="forms-elements.html">
+                    <a href="ders-ekle-ogrenci.jsp">
                         <i class="bi bi-circle"></i><span>Ders Seçimi</span>
                     </a>
                 </li>
@@ -102,10 +102,16 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="pages-register.jsp">
                         <i class="bi bi-circle"></i>
-                        <span>Register</span>
+                        <span>Yetkili Kayıt</span>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="ogrenci-register.jsp">
+                        <i class="bi bi-circle"></i>
+                        <span>Öğrenci Kayıt</span>
+                    </a>
+                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="sifredegis.jsp">
                         <i class="bi bi-circle"></i>

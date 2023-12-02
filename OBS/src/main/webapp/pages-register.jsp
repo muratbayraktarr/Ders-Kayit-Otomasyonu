@@ -3,6 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
+<%@ include file="sessioncontrol.jsp" %>
+<%@ include file="kullanicitipi.jsp" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,18 +62,13 @@
                                                     <label for="userRole" class="col-sm-10 col-form-label">Kullanıcı Tipi</label>
                                                     <select class="form-select" name="userrole" aria-label="Default select example" required onchange="handleUserRoleChange()">
                                                         <option selected disabled>Kullanıcı Tipi Seçiniz</option>
-                                                        <option value="Öğrenci">Öğrenci</option>
                                                         <option value="Öğretmen">Öğretmen</option>
                                                         <option value="Admin">Admin</option>
                                                     </select>
                                                 </div>
                                             </div>
 
-                                            <div class="col-12" id="additionalInputs" style="display:none;">
-                                                <br>
-                                                <input type="text" name="bolum" class="form-control" id="yourInput1" required/><br>
-                                                <input type="text" name="level" class="form-control" id="yourInput2" required/>
-                                            </div>
+                                            
                                             <br>
                                             <div class="col-12">
                                                 <button class="btn btn-primary w-100" disabled type="submit">Create Account</button>
@@ -81,17 +80,15 @@
                                         function handleUserRoleChange() {
                                             var userRoleSelect = document.querySelector("select[name='userrole']");
                                             var createAccountButton = document.querySelector("button[type='submit']");
-                                            var additionalInputs = document.getElementById("additionalInputs");
 
-                                            if (userRoleSelect.value === "Öğrenci") {
-                                                createAccountButton.removeAttribute("disabled");
-                                                additionalInputs.style.display = "block";
+                                            if (userRoleSelect.value === "Admin" || userRoleSelect.value === "Öğretmen") {
+                                                createAccountButton.disabled = false; // Admin veya Öğretmen seçildiğinde butonu etkinleştir
                                             } else {
-                                                additionalInputs.style.display = "none";
-                                                
+                                                createAccountButton.disabled = true; // Diğer durumda butonu devre dışı bırak
                                             }
                                         }
                                     </script>
+
 
 
 
