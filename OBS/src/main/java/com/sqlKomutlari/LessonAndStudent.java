@@ -80,7 +80,7 @@ public class LessonAndStudent {
             statement.setInt(1, user_id);
             resultSet = statement.executeQuery();
 
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 try {
                     int id = resultSet.getInt("id");
                     int lesson_id = resultSet.getInt("course_id");
