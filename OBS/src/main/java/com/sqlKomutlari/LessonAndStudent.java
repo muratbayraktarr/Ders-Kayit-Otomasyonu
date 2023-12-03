@@ -25,11 +25,32 @@ public class LessonAndStudent {
         MySQLVeritabaniBaglantisi veritabaniBaglantisi = new MySQLVeritabaniBaglantisi();
         Connection conn = null;
         PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
         System.out.println(id);
         System.out.println(student_id);
-
+        int course_id=0;
         try {
             conn = veritabaniBaglantisi.baglantiyiAl();
+            String selectSql = "SELECT course_id FROM student_courses WHERE id = ?";
+            statement = conn.prepareStatement(selectSql);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                course_id = resultSet.getInt("course_id");
+            }
+            
+            int rowsInserted = 0;
+            String sql = "UPDATE courses SET capacity = capacity - 1 WHERE course_id = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, course_id);
+            rowsInserted = statement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Capacity 1 azaltıldı");
+            } else {
+                System.out.println("Capacity azaltılamadı");
+            }
+
             String checkSql = "DELETE FROM student_courses WHERE id = ? and student_id = ?";
             statement = conn.prepareStatement(checkSql);
             statement.setInt(1, id);
@@ -48,7 +69,9 @@ public class LessonAndStudent {
             System.out.println("SQL hatası oluştu");
         } finally {
             try {
-
+                if (resultSet != null) {
+                    resultSet.close();
+                }
                 if (statement != null) {
                     statement.close();
                 }
@@ -92,7 +115,6 @@ public class LessonAndStudent {
                     String lesson_name = null;
                     if (resultSet2.next()) {
                         lesson_name = resultSet2.getString("course_name");
-                        System.out.println("Lesson name atandı");
 
                     }
                     resultSet2 = null;

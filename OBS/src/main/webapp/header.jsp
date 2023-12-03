@@ -1,3 +1,4 @@
+<%@page import="com.sqlKomutlari.DepartmentSQL"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <header id="header" class="header fixed-top d-flex align-items-center">
@@ -28,14 +29,14 @@
                                 </div>
                                 <div class="modal-body">
                                     <% try {
-
+                                        DepartmentSQL d23 = new DepartmentSQL();
 
                                     %>
                                     <h1><%= (String) session.getAttribute("name")%></h1>
                                     <% String role23 = (String) session.getAttribute("role"); %>
                                     <% if (role23.equals("Öğrenci")) {%>
-                                    <h2><%= (String) session.getAttribute("department")%></h2>                                             
-                                    <h4><%= (String) session.getAttribute("level")%>. Sınıf</h4>
+                                    <h2><%= d23.DepartmentGetId((Integer)session.getAttribute("department") ) %></h2>                                             
+                                    <h4><%= session.getAttribute("level")%>. Sınıf</h4>
                                     <% } %>
                                     <%
                                         } catch (Exception e) {
