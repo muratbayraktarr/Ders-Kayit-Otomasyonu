@@ -7,13 +7,17 @@
 <%      try {
         String Message = null;
         if (request.getMethod().equalsIgnoreCase("POST") && roleViews == 3) {
-            String name = request.getParameter("name");
+            String name = request.getParameter("name").trim();
             int capacity = Integer.parseInt(request.getParameter("capacity"));
             if (name.length() == 0) {
                 Message = "İsim Boş Girilemez.";
             } else if (capacity <= 0 || capacity == 0) {
                 Message = "Kapasite Değeri Geçersiz.";
-            } else {
+            }
+            else if (name.length() > 50) {
+                Message = "İsim değeri 50 karakterden fazla olamaz !";
+            }
+            else {
                 int department = Integer.parseInt(request.getParameter("department"));
                 int teacher = Integer.parseInt(request.getParameter("teacher"));
                 String day = request.getParameter("day");

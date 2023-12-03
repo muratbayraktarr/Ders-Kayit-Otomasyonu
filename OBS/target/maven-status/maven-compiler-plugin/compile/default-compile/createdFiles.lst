@@ -8,7 +8,9 @@ com\sqlKomutlari\Login.class
 com\sqlKomutlari\StudentListSQL.class
 com\model\Department.class
 com\sqlKomutlari\addUser.class
+com\sqlKomutlari\DersProgrami.class
 com\db\MySQLVeritabaniBaglantisi.class
+com\model\LessonAndStudentModel.class
 com\model\Lesson.class
 com\sqlKomutlari\ChangePassword.class
 com\sqlKomutlari\LessonAndStudent.class

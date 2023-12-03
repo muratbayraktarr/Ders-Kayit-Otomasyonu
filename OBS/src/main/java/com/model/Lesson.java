@@ -9,6 +9,7 @@ package com.model;
  * @author ByMazarat
  */
 public class Lesson {
+
     private int id;
     private String name;
     private int capacity;
@@ -34,6 +35,14 @@ public class Lesson {
         this.day = day;
         this.hours = hours;
         this.level = level;
+        this.classroom = classroom;
+    }
+
+    public Lesson(int id, String name, String day, String hours, String classroom) {
+        this.id = id;
+        this.name = name;
+        this.day = day;
+        this.hours = hours;
         this.classroom = classroom;
     }
 
@@ -84,6 +93,5 @@ public class Lesson {
     public String getClassroom() {
         return classroom;
     }
-    
-    
+
 }

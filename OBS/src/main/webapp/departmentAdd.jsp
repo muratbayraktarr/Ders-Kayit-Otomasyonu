@@ -44,7 +44,7 @@
             <h1>Öğrenci Bilgi</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Bölüm İşlemleri</a></li>
+                    <li class="breadcrumb-item"><a href="">Bölüm İşlemleri</a></li>
                     <li class="breadcrumb-item active"><%= (String) session.getAttribute("role")%></li>
                 </ol>
             </nav>

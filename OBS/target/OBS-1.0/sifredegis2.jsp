@@ -11,31 +11,37 @@
             System.out.println(lastpassword);
             String password = request.getParameter("currentPassword");
             System.out.println(password);
-            
+
             String newpasssword1 = request.getParameter("newPassword");
             String newpasssword2 = request.getParameter("confirmNewPassword");
             if (lastpassword.equals(password)) {
-                if (newpasssword1.equals(newpasssword2)) {
-                    ChangePassword d1 = new ChangePassword();
-                    String username = (String) session.getAttribute("username");
-                    Message = d1.ChangePass(username, newpasssword1);
-                    System.out.println(Message);
+                if (lastpassword.equals(newpasssword1)) {
+                    Message = "Eski şifreniz ile yeni şifreniz aynı olamaz.";
                     session.setAttribute("message", Message);
-                    session.removeAttribute("password");
-                    session.setAttribute("password", newpasssword1);
-                    response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
+                    response.sendRedirect("sifredegis.jsp"); 
                 } else {
-                    Message = "Girilen şifreler aynı değil";
-                    session.setAttribute("message", Message);
-                    response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
+                    if (newpasssword1.equals(newpasssword2)) {
+                        ChangePassword d1 = new ChangePassword();
+                        String username = (String) session.getAttribute("username");
+                        Message = d1.ChangePass(username, newpasssword1);
+                        System.out.println(Message);
+                        session.setAttribute("message", Message);
+                        session.removeAttribute("password");
+                        session.setAttribute("password", newpasssword1);
+                        response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
+                    } else {
+                        Message = "Girilen şifreler aynı değil";
+                        session.setAttribute("message", Message);
+                        response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
 
+                    }
                 }
-            }
-            else{
+
+            } else {
                 Message = "Mevcut şifrenizi yanlış girdiniz";
                 session.setAttribute("message", Message);
                 response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin
-                
+
             }
         } else {
             response.sendRedirect("sifredegis.jsp"); // Kullanıcı yetkilendirilmemişse, login sayfasına yönlendirin

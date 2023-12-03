@@ -122,8 +122,8 @@
                     <option value="Pazartesi">Pazartesi</option>
                     <option value="Salı">Salı</option>
                     <option value="Çarşamba">Çarşamba</option>
-                    <option value="Çarşamba">Perşembe</option>
-                    <option value="Çarşamba">Cuma</option>
+                    <option value="Perşembe">Perşembe</option>
+                    <option value="Cuma">Cuma</option>
 
                 </select>
             </div>

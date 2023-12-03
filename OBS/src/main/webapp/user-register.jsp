@@ -57,19 +57,26 @@
                                     <div class="card login-form mb-0">
                                         <div class="card-body pt-5">
 
-                                            <a class="text-center" href="index.html"> </a>            
+                                            <a class="text-center" href="index.jsp"> </a>            
 
-                                            <%                                        String Message = null;
+                                            <%                                        
+                                                String Message = null;
                                                 try {
 
                                                     if (request.getMethod().equalsIgnoreCase("POST")) {
                                                         try {
                                                             addUser a1 = new addUser();
-                                                            String name = request.getParameter("name");
-                                                            String username = request.getParameter("username");
-                                                            String password = request.getParameter("password");
-                                                            String userrole = request.getParameter("userrole");
-                                                            Message = a1.userAdd(name, username, password, userrole);
+                                                            String name = request.getParameter("name").trim();
+                                                            String username = request.getParameter("username").trim();
+                                                            String password = request.getParameter("password").trim();
+                                                            String userrole = request.getParameter("userrole").trim();
+                                                            if (name.length() == 0) {
+                                                                Message = "İsim boş bırakılamaz !!";
+                                                            } else if (name.length() > 50 || username.length() > 50 || password.length() > 255) {
+                                                                Message = "Lütfen form özelliklerini değiştirmeye çalışmayın  !!";
+                                                            } else {
+                                                                Message = a1.userAdd(name, username, password, userrole);
+                                                            }
                                             %>
                                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                 <i class="bi bi-check-circle me-1"></i>

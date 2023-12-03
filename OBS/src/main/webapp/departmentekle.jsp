@@ -10,7 +10,7 @@
     
     try {       
         if (request.getMethod().equalsIgnoreCase("POST") && roleViews == 3) {
-            String name = request.getParameter("department_name");
+            String name = request.getParameter("department_name").trim();
             String Message = null;
             if (name.length() == 0) {
                 Message = "Bölüm Adı Boş Girilemez.";

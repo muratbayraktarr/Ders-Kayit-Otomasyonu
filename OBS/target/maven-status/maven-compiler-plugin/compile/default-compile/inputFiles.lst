@@ -4,6 +4,7 @@ C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\model\Tea
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\mycompany\obs\JakartaRestConfiguration.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\LessonSQL.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\ChangePassword.java
+C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\model\LessonAndStudentModel.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\LessonAndStudent.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\db\MySQLVeritabaniBaglantisi.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\model\Student.java
@@ -11,5 +12,6 @@ C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutl
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\mycompany\obs\resources\JakartaEE10Resource.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\model\Lesson.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\DepartmentSQL.java
+C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\DersProgrami.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\model\Department.java
 C:\Users\ByMazarat\Desktop\Ders Kayýt Otomasyonu\OBS\src\main\java\com\sqlKomutlari\TeacherSQL.java

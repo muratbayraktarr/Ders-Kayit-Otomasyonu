@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="forms-layouts.html">
+                    <a href="dersprogrami.jsp">
                         <i class="bi bi-circle"></i><span>Ders Programı</span>
                     </a>
                 </li>
@@ -87,8 +87,8 @@
                         <i class="bi bi-circle"></i><span>Öğrencileri Listele</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="ogretmenlerilistele.jsp">
+                <li>
+                    <a href="ogretmenlerilistele.jsp">
                         <i class="bi bi-circle"></i>
                         <span>Öğretmenleri Listele</span>
                     </a>
@@ -99,19 +99,24 @@
                     </a>
                 </li>
                 <li>
+                    <a href="ders-sil-admin.jsp">
+                        <i class="bi bi-circle"></i><span>Ders Kayıt İşlemleri</span>
+                    </a>
+                </li>
+                <li>
                     <a href="departmentAdd.jsp">
                         <i class="bi bi-circle"></i><span>Bölüm İşlemleri</span>
                     </a>
                 </li
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="pages-register.jsp">
+                <li>
+                    <a href="pages-register.jsp">
                         <i class="bi bi-circle"></i>
                         <span>Yetkili Kayıt</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="ogrenci-register.jsp">
+                <li >
+                    <a href="ogrenci-register.jsp">
                         <i class="bi bi-circle"></i>
                         <span>Öğrenci Kayıt</span>
                     </a>

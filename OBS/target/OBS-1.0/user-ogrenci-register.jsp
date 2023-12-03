@@ -58,7 +58,7 @@
                             <div class="card login-form mb-0">
                                 <div class="card-body pt-5">
 
-                                    <a class="text-center" href="index.html"> </a>            
+                                    <a class="text-center" href="index.jsp"> </a>            
 
                                     <%
                                         String Message = null;  
@@ -67,13 +67,22 @@
                                         if (request.getMethod().equalsIgnoreCase("POST")) {
                                             try{
                                                 addUser a1 = new addUser();
-                                                String name = request.getParameter("name");
-                                                String username = request.getParameter("username");
-                                                String password = request.getParameter("password");
+                                                String name = request.getParameter("name").trim();
+                                                String username = request.getParameter("username").trim();
+                                                String password = request.getParameter("password").trim();
                                                 int department = Integer.parseInt(request.getParameter("department")) ;
                                                 int level = Integer.parseInt(request.getParameter("level"));
+                                                if(name.length() == 0){
+                                                    Message = "İsim boş bırakılamaz !!";
+                                                }
+                                                else if(name.length() > 50 || username.length() > 50 || password.length() > 255){
+                                                    Message = "Lütfen form özelliklerini değiştirmeye çalışmayın  !!";
+                                                }
+                                                else{
+                                                
                                                 
                                                 Message = a1.studentAdd(name,username,password,department,level);
+                                                }
                                                 System.out.println(Message);
                                     %>
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
