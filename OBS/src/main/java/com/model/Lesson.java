@@ -46,6 +46,16 @@ public class Lesson {
         this.classroom = classroom;
     }
 
+    public Lesson(int id, String name,int capacity, int max_capacity ,String day, String hours, String classroom) {
+        this.id = id;
+        this.name = name;
+        this.capacity = capacity;
+        this.max_capacity = max_capacity;
+        this.day = day;
+        this.hours = hours;
+        this.classroom = classroom;
+    }
+
     public int getId() {
         return id;
     }

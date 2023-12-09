@@ -10,7 +10,9 @@
 <%@ include file="sessioncontrol.jsp" %>
 
 <%    try {
-
+        if (roleViews != 1) {
+            response.sendRedirect("pages-error-404.jsp"); // Hata sayfasına yönlendirme yapabilirsiniz
+        }
 
 %>
 <!DOCTYPE html>
@@ -45,7 +47,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Öğrenci Bilgi</h1>
+            <h1>Ders Programı</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.jsp">Anasayfa</a></li>

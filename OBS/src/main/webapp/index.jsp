@@ -7,7 +7,12 @@
 <%@ include file="sessioncontrol.jsp" %>
 <%@ include file="kullanicitipi.jsp" %>
 
+<%
+try {
+        
+   
 
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +33,23 @@
   <!-- End Sidebar-->
   <!-- ======= Page Title ======= -->
   <main id="main" class="main">
-
+<% 
+Cookie[] cookies = request.getCookies();
+String roleCookie = null;
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("role")) {
+                roleCookie = cookie.getValue();
+            }
+        }
+    }
+%>
     <div class="pagetitle">
       <h1>Öğrenci Bilgi</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.jsp">Anasayfa</a></li>
-          <li class="breadcrumb-item active"><%= (String) session.getAttribute("role") %></li>
+          <li class="breadcrumb-item active"><%= roleCookie %></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -162,3 +177,11 @@
 </body>
 
 </html>
+
+<% 
+
+ } catch (Exception e) {
+    e.printStackTrace();
+    }
+    
+%>

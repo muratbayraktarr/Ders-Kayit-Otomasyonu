@@ -6,7 +6,7 @@
 
 
 
-<% // Veri kaydı yapılacak
+<% 
     
     try {       
         if (request.getMethod().equalsIgnoreCase("POST") && roleViews == 3) {

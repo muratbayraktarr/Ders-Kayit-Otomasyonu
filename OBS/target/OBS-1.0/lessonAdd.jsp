@@ -69,7 +69,7 @@
         <div class="row mb-3">
             <label for="inputText" class="col-sm-2 col-form-label">Ders Adı :</label>
             <div class="col-sm-10 d-flex">
-                <input type="text" name="name" class="form-control" required>
+                <input type="text" name="name" class="form-control" required  maxlength="50">
 
             </div>
         </div>

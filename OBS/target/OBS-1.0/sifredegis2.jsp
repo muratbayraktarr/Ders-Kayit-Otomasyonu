@@ -1,10 +1,14 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="com.sqlKomutlari.ChangePassword" %>
-
+<%@ include file ="kullanicitipi.jsp" %>
+<%@ include file="sessioncontrol.jsp" %>
 <%
 
     try {
+        if (roleViews == 0) {
+            response.sendRedirect("pages-error-404.jsp");
+        }
         if (request.getMethod().equalsIgnoreCase("POST")) {
             String Message = null;
             String lastpassword = (String) session.getAttribute("password");
@@ -18,7 +22,7 @@
                 if (lastpassword.equals(newpasssword1)) {
                     Message = "Eski şifreniz ile yeni şifreniz aynı olamaz.";
                     session.setAttribute("message", Message);
-                    response.sendRedirect("sifredegis.jsp"); 
+                    response.sendRedirect("sifredegis.jsp");
                 } else {
                     if (newpasssword1.equals(newpasssword2)) {
                         ChangePassword d1 = new ChangePassword();

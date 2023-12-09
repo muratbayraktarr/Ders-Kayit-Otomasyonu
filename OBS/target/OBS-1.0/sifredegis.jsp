@@ -5,6 +5,9 @@
 
 
 <%  try {
+        if (roleViews == 0) {
+            response.sendRedirect("pages-error-404.jsp");
+        }
 %>
 
 <!DOCTYPE html>
@@ -27,17 +30,17 @@
                         <form method="post" action="sifredegis2.jsp">
                             <div class="form-group">
                                 <label for="currentPassword">Mevcut Şifre:</label>
-                                <input type="password" class="form-control" name="currentPassword" required>
+                                <input type="password" class="form-control" name="currentPassword" required  maxlength="255">
                             </div>
 
                             <div class="form-group">
                                 <label for="newPassword">Yeni Şifre:</label>
-                                <input type="password" class="form-control" name="newPassword" required>
+                                <input type="password" class="form-control" name="newPassword" required  maxlength="255">
                             </div>
 
                             <div class="form-group">
                                 <label for="confirmNewPassword">Yeni Şifre (Tekrar):</label>
-                                <input type="password" class="form-control" name="confirmNewPassword" required>
+                                <input type="password" class="form-control" name="confirmNewPassword" required  maxlength="255">
                             </div>
                             <br>
                             <button type="submit" class="btn btn-primary btn-block">Şifreyi Değiştir</button>

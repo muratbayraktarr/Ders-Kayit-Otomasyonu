@@ -14,6 +14,9 @@ import java.util.ArrayList;
  */
 public class LessonSQL {
 
+   
+
+    
     public String LessonAdd(String name, int max_capacity, int department_id, int instructor_id, String day, String hours, int level, String classroom) {
         MySQLVeritabaniBaglantisi db = new MySQLVeritabaniBaglantisi();
         String Message = "";

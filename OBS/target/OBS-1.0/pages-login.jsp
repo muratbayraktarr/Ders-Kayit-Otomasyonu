@@ -46,14 +46,14 @@
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                                <input type="text" name="username" class="form-control" id="yourUsername" required  maxlength="50">
                                                     <div class="invalid-feedback">Please enter your username.</div>
                                             </div>
                                         </div>
 
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required  maxlength="255">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
 
@@ -78,6 +78,10 @@
                                                 session.setAttribute("name", login.getName());
                                                 session.setAttribute("role", login.getUserrole());
                                                 session.setAttribute("password", password);
+                                                Cookie roleCookie = new Cookie("role", login.getUserrole());
+                                                roleCookie.setMaxAge(3600);
+                                                response.addCookie(roleCookie);
+
                                                 System.out.println(login.getName());
                                                 System.out.println(login.getUserrole());
                                                 if (login.getUserrole().equals("Öğrenci")) {
