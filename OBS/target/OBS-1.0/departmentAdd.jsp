@@ -96,13 +96,7 @@
                 %>
                 <tr> 
                     <td><%= ++a%></td>
-                    <td><%= veri.getName()%></td>
-                    <td>
-                        <form action="DeleteDepartmentServlet" name ="silme" method="post">
-                            <input type="hidden" name="departmentId" value="<%= veri.getId()%>">
-                                <input type="submit" value="Delete">
-                                    </form>
-                                    </td>
+                    <td><%= veri.getName()%></td>             
                                     </tr>
                                     <% }%>
                                     </tbody>

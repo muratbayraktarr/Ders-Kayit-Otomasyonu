@@ -16,9 +16,9 @@ import java.sql.SQLException;
 
 public class MySQLVeritabaniBaglantisi {
 
-    private static final String URL = "jdbc:mysql://data.sobiad.com:3306/web_programlama1";
-    private static final String KULLANICI_ADI = "murat";
-    private static final String SIFRE = "murat";
+    private static final String URL = "jdbc:mysql://34.133.156.246:3306/web_programlama1";
+    private static final String KULLANICI_ADI = "aemir77dag";
+    private static final String SIFRE = "alperen123";
     private static Connection baglanti = null;
 
     public Connection baglantiyiAl() {
